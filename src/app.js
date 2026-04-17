@@ -1,0 +1,1 @@
+// app would be with express while db will be with mongoose
