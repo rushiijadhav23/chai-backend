@@ -2,12 +2,28 @@
 // require('dotenv').config({path: './env'})
 import dotenv from "dotenv"
 import connectDB from "./db/index.js";
+import { app } from "./app.js";
 
 dotenv.config({
     path: './env'
 })
 
-connectDB();
+connectDB() // after completion of this methd it returns a promise
+.then(() => {
+    // before starting my server i want to listen for any other errors
+    app.on("Error", () => {
+        console.log("Application unable to talk with db", error);
+        throw error
+    })
+
+    // now after the db is connected it now listens to our express app
+    app.listen( process.env.PORT || 8000, () => {
+        console.log(`Server is running at port: http://localhost/${process.env.PORT}`)
+    })
+})
+.catch((err) => {
+    console.log("MONGODB connection failed!!!", err);
+})
 
 
 

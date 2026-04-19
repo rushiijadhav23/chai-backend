@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import { DB_NAME } from "../constants.js";
 
 
+// this db connection methods is async mthd, and when an async mthd is completed it actually returns a promise too
 const connectDB = async () => {
     try {
         // here we store the response after connection
