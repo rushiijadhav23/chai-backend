@@ -1,6 +1,6 @@
 // app would be with express while db will be with mongoose
 import express from "express";
-import cors from "cors;"
+import cors from "cors"
 import cookieParse from "cookie-parser"; 
 
 const app = express()
